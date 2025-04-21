@@ -1,59 +1,74 @@
-# NmTodo
+# 📝 NM-TODO Angular App
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.1.1.
+A modern TODO management application built with Angular 17, Signals, Material UI, and reactive forms.
 
-## Development server
+## 🔗 Demo
 
-To start a local development server, run:
+👉 [View Live on GitHub Pages](https://aarakelov.github.io/nm-todo/)
+
+## 🛠️ Setup & Run
+
+### 1. Clone the project
+
+```bash
+git clone https://github.com/AArakelov/nm-todo.git
+cd nm-todo
+```
+
+### 2. Install dependencies
+
+```bash
+npm install
+```
+
+### 3. Run locally
 
 ```bash
 ng serve
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+Visit `http://localhost:4200/nm-todo` (base href is set for GitHub Pages).
 
-## Code scaffolding
+---
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+## Build & Deploy
 
-```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+### Production build
 
 ```bash
-ng generate --help
+ng build --base-href=/nm-todo/
 ```
 
-## Building
+### Deploy to GitHub Pages
 
-To build the project run:
+Using [angular-cli-ghpages](https://github.com/angular-schule/angular-cli-ghpages):
 
 ```bash
-ng build
+npx angular-cli-ghpages --dir=dist/nm-todo
 ```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+> GitHub Pages must be enabled on the `gh-pages` branch.
 
-## Running unit tests
+---
 
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+## Architecture Notes
 
-```bash
-ng test
-```
+- **State Management:** Signals (`signal()`, `computed()`) in `TodoService`
+- **Storage:** `@ngx-pwa/local-storage` with typed access & schema support
+- **Forms:** ReactiveForms with global and control-level validators
+- **Routing:** Standalone Angular Router with declarative setup
+- **CD Optimized:** Countdown timers run outside Angular zone
 
-## Running end-to-end tests
+---
 
-For end-to-end (e2e) testing, run:
+## Tech Stack
 
-```bash
-ng e2e
-```
+- Angular 19
+- Angular Material
+- Signals
+- ngx-material-timepicker
+- @ngx-pwa/local-storage
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+---
 
-## Additional Resources
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
