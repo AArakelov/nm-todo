@@ -1,1 +1,107 @@
-<p>page-add-todo works!</p>
+<div
+  class="add-todo-widget"
+>
+  <div
+    class="add-todo-header"
+  >
+    <h2>Add New TODO</h2>
+    <button
+      (click)="goBack()"
+      class="back-button"
+      mat-icon-button
+    >
+      <mat-icon>arrow_back</mat-icon>
+    </button>
+  </div>
+
+  <form
+    (ngSubmit)="onSubmit()"
+    [formGroup]="form"
+  >
+    <div
+      class="todo-row"
+    >
+
+      <mat-form-field
+        appearance="outline"
+        class="todo-title"
+      >
+        <mat-label>Title</mat-label>
+        <textarea
+          formControlName="title"
+          matInput
+          placeholder="Enter task..."
+        ></textarea>
+        @if (isControlInvalid(
+          'title')) {
+          <mat-error>Title is required</mat-error>
+        }
+        @if (form.controls.title.errors?.['maxlength'] &&
+        (form.get(
+            'title')?.touched ||
+          submitted())) {
+          <mat-error>Max 100 characters</mat-error>
+        }
+      </mat-form-field>
+
+      <mat-form-field
+        appearance="outline"
+        class="todo-created"
+      >
+        <mat-label>Expiration Date</mat-label>
+        <input
+          (click)="picker.open()"
+          [matDatepicker]="picker"
+          [min]="today"
+          formControlName="expirationDate"
+          matInput
+        />
+        <mat-datepicker-toggle
+          [for]="picker"
+          matIconSuffix
+        ></mat-datepicker-toggle>
+
+        <mat-datepicker
+          #picker
+        ></mat-datepicker>
+        @if (isControlInvalid(
+          'expirationDate')) {
+          <mat-error>Date cannot be in the past</mat-error>
+        }
+      </mat-form-field>
+
+      <mat-form-field
+        appearance="outline"
+        class="todo-timeleft"
+      >
+        <mat-label>Expiration Time</mat-label>
+        <input
+          [ngxTimepicker]="picker1"
+          formControlName="expirationTime"
+          matInput
+          readonly
+        />
+        <ngx-material-timepicker
+          #picker1
+        ></ngx-material-timepicker>
+      </mat-form-field>
+
+      <div
+        class="todo-actions"
+      >
+        <button
+          [disabled]="form.invalid || todoService.isLoading()"
+          color="primary"
+          mat-raised-button
+          type="submit"
+        >Create
+        </button>
+      </div>
+    </div>
+    @if (form.errors?.['timeInPast'] &&
+    (form.dirty ||
+      submitted())) {
+      <mat-error>Expiration time must be in the future</mat-error>
+    }
+  </form>
+</div>

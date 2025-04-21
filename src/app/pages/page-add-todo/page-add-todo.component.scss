@@ -1,0 +1,118 @@
+.add-todo-widget {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 1.5rem;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+
+  .add-todo-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #e0e0e0;
+
+    h2 {
+      margin: 0;
+      font-size: 1.5rem;
+      font-weight: 500;
+      color: #3f51b5; // Primary color
+    }
+
+    .back-button {
+      transition: transform 0.2s ease;
+
+      &:hover {
+        transform: translateX(-2px);
+        background-color: rgba(63, 81, 181, 0.04);
+      }
+
+      mat-icon {
+        color: #3f51b5;
+      }
+    }
+  }
+
+
+  form {
+    .todo-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr auto;
+      gap: 1.5rem;
+      align-items: flex-start;
+
+      @media (max-width: 800px) {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+      }
+
+      mat-form-field {
+        width: 100%;
+
+        &.todo-title {
+          grid-column: 1 / -1;
+
+          textarea {
+            min-height: 80px;
+            resize: vertical;
+          }
+        }
+
+        // Outline color customization
+        &.mat-mdc-form-field.mat-focused .mdc-notched-outline__leading,
+        &.mat-mdc-form-field.mat-focused .mdc-notched-outline__notch,
+        &.mat-mdc-form-field.mat-focused .mdc-notched-outline__trailing {
+          border-color: #3f51b5 !important;
+        }
+      }
+
+
+      // Actions Section
+      .todo-actions {
+        display: flex;
+        align-items: center;
+        height: 100%;
+        padding-top: 0.5rem;
+
+        button {
+          padding: 0 24px;
+          height: 48px;
+          font-weight: 500;
+          letter-spacing: 0.5px;
+
+          &:disabled {
+            opacity: 0.6;
+          }
+
+          @media (max-width: 800px) {
+            width: 100%;
+            margin-top: 0.5rem;
+          }
+        }
+      }
+    }
+  }
+
+  mat-error {
+    font-size: 0.75rem;
+    margin-top: 0.25rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .add-todo-widget {
+    padding: 1rem;
+    border-radius: 0;
+    box-shadow: none;
+
+    .add-todo-header {
+      margin-bottom: 1rem;
+
+      h2 {
+        font-size: 1.3rem;
+      }
+    }
+  }
+}
