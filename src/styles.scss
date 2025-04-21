@@ -1,9 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
 @use 'assets/styles/main.scss';
+@use '@angular/material' as mat;
 
 .mat-mdc-button.active {
   color: #ff4081 !important;
   font-weight: bold;
 }
-
-

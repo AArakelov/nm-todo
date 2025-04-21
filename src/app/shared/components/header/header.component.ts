@@ -1,4 +1,4 @@
-import {Component}                            from '@angular/core';
+import {ChangeDetectionStrategy, Component}   from '@angular/core';
 import {MatToolbar}                           from '@angular/material/toolbar';
 import {MatButton, MatIconButton}             from '@angular/material/button';
 import {RouterLink, RouterLinkActive}         from '@angular/router';
@@ -18,10 +18,10 @@ import {MatIcon}                              from '@angular/material/icon';
     MatIcon,
     RouterLinkActive
   ],
+  changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <mat-toolbar color="primary" class="header-toolbar">
       <span class="app-title">MY TODO LIST</span>
-
       <!-- Desktop navigation -->
       <div class="nav-buttons hide-on-mobile">
         <button
@@ -40,7 +40,6 @@ import {MatIcon}                              from '@angular/material/icon';
         >Favorite
         </button>
       </div>
-
       <!-- Mobile hamburger -->
       <div class="show-on-mobile">
         <button mat-icon-button [matMenuTriggerFor]="menu">
@@ -55,6 +54,13 @@ import {MatIcon}                              from '@angular/material/icon';
     </mat-toolbar>
   `,
   styles: `
+    :host {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
     .header-toolbar {
       display: flex;
       justify-content: space-between;
