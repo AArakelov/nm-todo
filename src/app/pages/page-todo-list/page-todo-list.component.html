@@ -1,1 +1,62 @@
-<p>page-todo-list works!</p>
+<div
+  class="todo-list-container"
+>
+  @if (isFavoriteRoute()) {
+    <h2>Favorite TODOs</h2>
+    <div
+      class="todo-section"
+    >
+      @for (todo of filteredTodos(); track todo.id) {
+        <app-todo-item
+          [todo]="todo"
+        />
+      }
+      @if (!filteredTodos().length) {
+        <div
+          class="empty-state"
+        >No favorite TODOs yet
+        </div>
+      }
+    </div>
+  }
+
+  @if (!isFavoriteRoute()) {
+    <div
+      class="todo-section"
+    >
+      <h3>Today TODO's</h3>
+      <div
+        class="todo-items-container"
+      >
+        @for (todo of todayTodos(); track todo.id) {
+          <app-todo-item
+            [todo]="todo"
+          />
+        }
+        @if (!todayTodos().length) {
+          <div
+            class="empty-state"
+          >No TODOs for today
+          </div>
+        }
+      </div>
+    </div>
+
+    @if (otherTodos().length) {
+      <div
+        class="todo-section"
+      >
+        <h3>My Todo List</h3>
+        <div
+          class="todo-items-container"
+        >
+          @for (todo of otherTodos(); track todo.id) {
+            <app-todo-item
+              [todo]="todo"
+            />
+          }
+        </div>
+      </div>
+    }
+  }
+</div>
