@@ -24,8 +24,8 @@ jobs:
       - name: 📥 Install dependencies
         run: npm install
 
-      - name: 🛠 Build Angular app
-        run: npm run build -- --configuration=production --base-href=/nm-todo/
+      - name: Build Angular app
+        run: npm run build:gh
 
 
       - name: 🚀 Deploy to GitHub Pages

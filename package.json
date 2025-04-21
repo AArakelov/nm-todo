@@ -5,8 +5,9 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
+    "build:gh": "ng build --configuration=production  --base-href=/nm-todo/",
     "watch": "ng build --watch --configuration development",
-    "deploy": "ng deploy --base-href=/nm-todo/",
+    "deploy": "ng build --base-href=/nm-todo/ && npx angular-cli-ghpages --dir=dist/nm-todo",
     "test": "ng test"
   },
   "private": true,
