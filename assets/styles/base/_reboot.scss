@@ -1,0 +1,30 @@
+@use '../abstracts/project-vars';
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  transition: background 0.3s ease;
+}
+
+html {
+  font-size: 16px;
+  font-family: sans-serif;
+  height: 100%;
+  line-height: 1.15;
+}
+
+body {
+  font-family: project-vars.$font-family-base;
+  font-size: project-vars.$fsb;
+  margin: 0;
+  height: 100%;
+  overflow: auto;
+}
+
+
+button[disabled] {
+  opacity: 0.5;
+}
+
+
