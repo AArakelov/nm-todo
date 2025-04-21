@@ -1,0 +1,57 @@
+<div
+  class="todo-item"
+>
+  <div
+    class="row title-row"
+  >
+    <span
+      class="title"
+    >{{ todo.title }}</span>
+  </div>
+
+  <div
+    class="row meta-row"
+  >
+    <span
+      class="meta"
+    >{{ todo.createdAt | date: 'mediumDate' }}</span>
+
+    <span
+      [ngClass]="{ urgent: isUrgent() }"
+      class="meta time"
+    >
+      @if (isToday()) {
+        {{ timeLeft() }}
+      } @else {
+        {{ todo.expirationDate | date: 'mediumDate' }}
+      }
+    </span>
+
+    <span
+      class="actions"
+    >
+      <button
+        (click)="onToggleFavorite()"
+        [disabled]="todoService.isLoading()"
+        mat-icon-button
+      >
+        <mat-icon
+          color="warn"
+        >{{
+            todo.isFavorite ?
+              'favorite' :
+              'favorite_border'
+          }}</mat-icon>
+      </button>
+
+      <button
+        (click)="onRemove()"
+        [disabled]="todoService.isLoading()"
+        class="delete-btn"
+        mat-icon-button
+      >
+        <mat-icon>close</mat-icon>
+      </button>
+    </span>
+  </div>
+</div>
